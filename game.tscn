@@ -1,0 +1,273 @@
+[gd_scene load_steps=25 format=2]
+
+[ext_resource path="res://sprites minhas criaçoes/background.png" type="Texture" id=1]
+[ext_resource path="res://player.tscn" type="PackedScene" id=2]
+[ext_resource path="res://audio/KORPIKLAANI-A-Man-With-A-Plan-_OFFICIAL-VIDEO_.wav" type="AudioStream" id=3]
+[ext_resource path="res://assts/grama.tres" type="TileSet" id=4]
+[ext_resource path="res://slave.tscn" type="PackedScene" id=5]
+[ext_resource path="res://portal.gd" type="Script" id=6]
+[ext_resource path="res://walk/PORTAL.png" type="Texture" id=7]
+[ext_resource path="res://tiles/Sem título.png" type="Texture" id=8]
+[ext_resource path="res://Sprite-0001.png" type="Texture" id=9]
+[ext_resource path="res://manu/Pausegame.gd" type="Script" id=10]
+[ext_resource path="res://assts/RETURN TO CASTLE.ttf" type="DynamicFontData" id=11]
+[ext_resource path="res://pausecontinue.gd" type="Script" id=12]
+[ext_resource path="res://quit.gd" type="Script" id=13]
+[ext_resource path="res://movement.tscn" type="PackedScene" id=14]
+[ext_resource path="res://monster2.tscn" type="PackedScene" id=15]
+[ext_resource path="res://assts/pad_Left.png" type="Texture" id=16]
+[ext_resource path="res://assts/pad_right.png" type="Texture" id=17]
+[ext_resource path="res://assts/pad_Up.png" type="Texture" id=18]
+
+[sub_resource type="CapsuleShape2D" id=1]
+radius = 12.481
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 50, 127.925 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 40
+font_data = ExtResource( 11 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 45
+font_data = ExtResource( 11 )
+
+[sub_resource type="DynamicFont" id=5]
+size = 45
+font_data = ExtResource( 11 )
+
+[sub_resource type="DynamicFont" id=6]
+size = 45
+font_data = ExtResource( 11 )
+
+[node name="game 5" type="Node"]
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2( 1.5, 0.8 )
+motion_offset = Vector2( 1.5, 0.8 )
+motion_mirroring = Vector2( 1120, 640 )
+
+[node name="Sprite" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2( -87.0002, 0 )
+scale = Vector2( 2.04886, 1.75342 )
+texture = ExtResource( 1 )
+centered = false
+
+[node name="player" parent="." instance=ExtResource( 2 )]
+position = Vector2( -109.938, 46.0772 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="player"]
+stream = ExtResource( 3 )
+autoplay = true
+
+[node name="TileMap" type="TileMap" parent="."]
+position = Vector2( -250, -10 )
+tile_set = ExtResource( 4 )
+cell_size = Vector2( 32, 32 )
+format = 1
+tile_data = PoolIntArray( -196552, 0, 0, -196551, 1, 0, -196550, 2, 0, -131017, 1, 0, -65485, 0, 0, -65484, 2, 0, 131113, 0, 0, 131114, 1, 0, 131115, 1, 0, 131116, 1, 0, 131117, 1, 0, 131118, 1, 0, 131119, 1, 0, 131120, 2, 0, 196619, 0, 0, 196620, 1, 0, 196621, 1, 0, 196622, 1, 0, 196623, 2, 0, 196628, 0, 0, 196629, 1, 0, 196630, 1, 0, 196631, 1, 0, 196632, 1, 0, 196633, 1, 0, 196634, 1, 0, 196635, 2, 0, 262179, 0, 0, 262180, 1, 0, 262181, 1, 0, 262182, 2, 0, 262199, 1, 0, 262200, 1, 0, 262201, 1, 0, 262202, 1, 0, 262203, 1, 0, 262204, 1, 0, 262205, 1, 0, 262206, 1, 0, 262207, 1, 0, 262208, 1, 0, 262209, 2, 0, 327685, 0, 0, 327686, 1, 0, 327687, 1, 0, 327688, 1, 0, 327689, 2, 0, 327731, 1, 0, 327732, 1, 0, 393246, 0, 0, 393247, 1, 0, 393248, 2, 0, 393283, 0, 0, 393284, 2, 0, 458823, 0, 0, 458824, 1, 0, 458825, 1, 0, 458826, 1, 0, 458827, 1, 0, 458828, 1, 0, 458829, 1, 0, 458830, 1, 0, 458831, 1, 0, 458832, 1, 0, 458833, 1, 0, 458834, 1, 0, 458835, 1, 0, 458836, 1, 0, 458837, 1, 0, 458838, 1, 0, 458839, 1, 0, 458840, 1, 0, 458841, 1, 0, 458842, 1, 0, 458843, 1, 0, 458844, 1, 0, 458845, 1, 0, 458846, 1, 0, 458847, 1, 0, 458848, 1, 0, 458849, 1, 0, 458850, 1, 0, 458851, 1, 0, 458852, 1, 0, 458853, 1, 0, 458854, 1, 0, 458855, 1, 0, 458856, 1, 0, 458857, 1, 0, 458858, 1, 0, 458859, 1, 0, 458860, 1, 0, 458861, 1, 0, 458862, 1, 0, 458863, 1, 0, 458864, 1, 0, 458865, 1, 0, 458866, 1, 0, 458867, 1, 0, 458868, 1, 0, 458869, 1, 0, 458870, 1, 0, 458871, 1, 0, 458872, 1, 0, 458873, 1, 0, 458874, 1, 0, 458875, 1, 0, 458876, 1, 0, 458877, 1, 0, 458878, 1, 0, 458879, 1, 0, 458880, 1, 0, 458881, 1, 0, 458882, 1, 0, 458883, 1, 0, 458884, 1, 0, 458885, 1, 0, 458886, 1, 0, 458887, 1, 0, 458888, 1, 0, 458889, 1, 0, 458890, 1, 0, 458891, 1, 0, 458892, 1, 0, 458893, 1, 0, 458894, 1, 0, 458895, 1, 0, 458896, 1, 0, 458897, 1, 0, 458898, 1, 0, 458899, 1, 0, 458900, 1, 0, 458901, 1, 0, 458902, 1, 0, 458903, 1, 0, 458904, 1, 0, 458905, 1, 0, 458906, 1, 0, 458907, 1, 0, 458908, 1, 0, 458909, 1, 0, 458910, 1, 0, 458911, 1, 0, 458912, 1, 0, 458913, 1, 0, 458914, 1, 0, 458915, 1, 0, 458916, 1, 0, 458917, 1, 0, 458918, 1, 0, 458919, 1, 0, 458920, 1, 0, 458921, 1, 0, 458922, 1, 0, 458923, 1, 0, 458924, 1, 0, 458925, 1, 0, 458926, 1, 0, 458927, 1, 0, 458928, 2, 0, 589826, 0, 0, 589827, 1, 0, 589828, 1, 0, 589829, 1, 0, 589830, 0, 0, 589831, 1, 0, 589832, 1, 0, 589833, 1, 0, 589834, 2, 0, 589871, 0, 0, 589872, 1, 0, 589873, 2, 0, 655395, 0, 0, 655396, 1, 0, 655397, 1, 0, 655398, 1, 0, 655399, 1, 0, 655400, 1, 0, 655401, 1, 0, 655402, 1, 0, 655403, 2, 0, 720911, 0, 0, 720912, 2, 0, 720913, 2, 0, 720914, 2, 0, 851994, 0, 0, 851995, 0, 0, 851996, 1, 0, 851997, 1, 0, 851998, 1, 0, 851999, 1, 0, 852000, 2, 0, 983048, 0, 0, 983049, 1, 0, 983050, 1, 0, 983051, 1, 0, 983052, 1, 0, 983053, 1, 0, 983054, 1, 0, 983055, 1, 0, 983056, 1, 0, 983057, 1, 0, 983058, 1, 0, 983059, 1, 0, 983060, 1, 0, 983061, 1, 0, 983062, 1, 0, 983063, 2, 0 )
+
+[node name="slave" parent="." instance=ExtResource( 5 )]
+position = Vector2( 436, 66 )
+
+[node name="portal" type="Area2D" parent="."]
+position = Vector2( 10, 10 )
+script = ExtResource( 6 )
+
+[node name="Sprite" type="Sprite" parent="portal"]
+position = Vector2( 5350, 130 )
+scale = Vector2( 1.8, 1.8 )
+z_index = -1
+texture = ExtResource( 7 )
+centered = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="portal"]
+position = Vector2( 5368.58, 170.127 )
+scale = Vector2( -0.805763, -1.20067 )
+shape = SubResource( 1 )
+
+[node name="wall" type="StaticBody2D" parent="."]
+position = Vector2( 90, 90 )
+
+[node name="Sprite Map" type="Sprite" parent="wall"]
+position = Vector2( 2625, 97 )
+scale = Vector2( 1, 2.0625 )
+texture = ExtResource( 8 )
+
+[node name="Sprite Map2" type="Sprite" parent="wall"]
+position = Vector2( 2625, 97 )
+scale = Vector2( 0.958211, 1.81657 )
+texture = ExtResource( 8 )
+
+[node name="shape" type="CollisionShape2D" parent="wall"]
+position = Vector2( 2626.17, 93 )
+scale = Vector2( 0.971698, 0.234513 )
+shape = SubResource( 2 )
+
+[node name="shape2" type="CollisionShape2D" parent="wall"]
+position = Vector2( 2626.17, 93 )
+scale = Vector2( 0.971698, 0.234513 )
+shape = SubResource( 2 )
+
+[node name="slave2" parent="." instance=ExtResource( 5 )]
+position = Vector2( 213.944, 449.112 )
+
+[node name="slave3" parent="." instance=ExtResource( 5 )]
+position = Vector2( 132.068, 62.6022 )
+
+[node name="slave4" parent="." instance=ExtResource( 5 )]
+position = Vector2( 1168.2, 32.7165 )
+
+[node name="slave5" parent="." instance=ExtResource( 5 )]
+position = Vector2( 1610, 96 )
+
+[node name="slave6" parent="." instance=ExtResource( 5 )]
+position = Vector2( 2516.99, 192.78 )
+
+[node name="Sprite-0001" type="Sprite" parent="."]
+position = Vector2( 1060, 260 )
+scale = Vector2( 1.5, 1.5 )
+z_index = -1
+texture = ExtResource( 9 )
+offset = Vector2( 5, 0 )
+
+[node name="Sprite-0002" type="Sprite" parent="."]
+position = Vector2( 1750, 70 )
+scale = Vector2( 1.5, 1.5 )
+z_index = -1
+texture = ExtResource( 9 )
+offset = Vector2( 5, 0 )
+
+[node name="Sprite-0003" type="Sprite" parent="."]
+position = Vector2( 2260, 164 )
+scale = Vector2( 1.5, 1.5 )
+z_index = -1
+texture = ExtResource( 9 )
+offset = Vector2( 5, 0 )
+
+[node name="Sprite-0004" type="Sprite" parent="."]
+position = Vector2( 4155.29, 166.237 )
+scale = Vector2( 1.5, 1.5 )
+z_index = -1
+texture = ExtResource( 9 )
+offset = Vector2( 5, 0 )
+
+[node name="Sprite-0005" type="Sprite" parent="."]
+position = Vector2( 470, 420 )
+scale = Vector2( 1.5, 1.5 )
+z_index = -1
+texture = ExtResource( 9 )
+offset = Vector2( 5, 0 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 100
+
+[node name="pause" type="Control" parent="CanvasLayer"]
+pause_mode = 2
+visible = false
+margin_right = 40.0
+margin_bottom = 40.0
+script = ExtResource( 10 )
+
+[node name="BlackOverlay" type="ColorRect" parent="CanvasLayer/pause"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = 1100.0
+margin_bottom = 600.0
+color = Color( 0.0117188, 0.0117188, 0.0117188, 0.259686 )
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/pause/BlackOverlay"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -192.0
+margin_top = -220.0
+margin_right = 208.0
+margin_bottom = 180.0
+color = Color( 0.09375, 0.0823975, 0.0823975, 1 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/pause/BlackOverlay/ColorRect"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Label" type="Label" parent="CanvasLayer/pause/BlackOverlay/ColorRect/VBoxContainer"]
+margin_right = 400.0
+margin_bottom = 37.0
+custom_fonts/font = SubResource( 3 )
+text = "Pause Menu"
+align = 1
+
+[node name="pausecontinue" type="Button" parent="CanvasLayer/pause/BlackOverlay/ColorRect/VBoxContainer"]
+margin_top = 41.0
+margin_right = 400.0
+margin_bottom = 89.0
+custom_fonts/font = SubResource( 4 )
+custom_colors/font_color_disabled = Color( 0.988281, 0.972839, 0.972839, 1 )
+text = "Continue"
+script = ExtResource( 12 )
+
+[node name="Options" type="Button" parent="CanvasLayer/pause/BlackOverlay/ColorRect/VBoxContainer"]
+margin_top = 93.0
+margin_right = 400.0
+margin_bottom = 141.0
+size_flags_stretch_ratio = 1.36
+custom_fonts/font = SubResource( 5 )
+text = "Options"
+
+[node name="quit" type="Button" parent="CanvasLayer/pause/BlackOverlay/ColorRect/VBoxContainer"]
+margin_top = 145.0
+margin_right = 400.0
+margin_bottom = 193.0
+custom_fonts/font = SubResource( 6 )
+text = "Quit"
+script = ExtResource( 13 )
+
+[node name="plataforma_que_cai1" type="Node2D" parent="."]
+position = Vector2( 1060, 260 )
+scale = Vector2( 1.5, 1.5 )
+
+[node name="platafoma vai vai" type="Node2D" parent="."]
+position = Vector2( 1480, 280 )
+
+[node name="movement" parent="platafoma vai vai" instance=ExtResource( 14 )]
+
+[node name="monster2" parent="." instance=ExtResource( 15 )]
+position = Vector2( 738.248, -9.05578 )
+
+[node name="monster3" parent="." instance=ExtResource( 15 )]
+position = Vector2( -17.5808, -8.7905 )
+
+[node name="monster4" parent="." instance=ExtResource( 15 )]
+position = Vector2( 1817.51, -11.6882 )
+
+[node name="movement" parent="." instance=ExtResource( 14 )]
+position = Vector2( 2941.98, 90.6444 )
+
+[node name="hud" type="CanvasLayer" parent="."]
+
+[node name="pad" type="Node2D" parent="hud"]
+
+[node name="left" type="TouchScreenButton" parent="hud/pad"]
+position = Vector2( 26.7145, 523.355 )
+scale = Vector2( 2, 2 )
+normal = ExtResource( 16 )
+action = "ui_left"
+
+[node name="right" type="TouchScreenButton" parent="hud/pad"]
+position = Vector2( 168.465, 522.475 )
+scale = Vector2( 2, 2 )
+normal = ExtResource( 17 )
+action = "ui_right"
+
+[node name="up" type="TouchScreenButton" parent="hud/pad"]
+position = Vector2( 979.107, 455.826 )
+scale = Vector2( 2.5, 2.5 )
+normal = ExtResource( 18 )
+action = "ui_up"
+[connection signal="body_entered" from="portal" to="portal" method="_on_portal_body_entered"]
+[connection signal="pressed" from="CanvasLayer/pause/BlackOverlay/ColorRect/VBoxContainer/pausecontinue" to="CanvasLayer/pause" method="_on_pausecontinue_pressed"]
+[connection signal="pressed" from="CanvasLayer/pause/BlackOverlay/ColorRect/VBoxContainer/quit" to="CanvasLayer/pause" method="_on_quit_pressed"]

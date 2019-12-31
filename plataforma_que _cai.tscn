@@ -1,0 +1,80 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://plataforma_que _cai.gd" type="Script" id=1]
+[ext_resource path="res://tiles/Sem título.png" type="Texture" id=2]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 49.9126, 20 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 17.5397, 10 )
+
+[sub_resource type="Animation" id=3]
+resource_name = "treme"
+tracks/0/type = "value"
+tracks/0/path = NodePath("sprites:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Vector2( 1, 0 ), Vector2( -1, 0 ), Vector2( 0, 0 ), Vector2( 0, 1 ), Vector2( 0, 0 ), Vector2( 2, 0 ), Vector2( 0, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("sprites/Sem título:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray(  ),
+"transitions": PoolRealArray(  ),
+"update": 0,
+"values": [  ]
+}
+
+[node name="plataforma_que _cai" type="KinematicBody2D"]
+show_behind_parent = true
+position = Vector2( 91, 60 )
+collision_layer = 0
+collision/safe_margin = 0.01
+script = ExtResource( 1 )
+_sections_unfolded = [ "Collision", "Transform", "Visibility", "collision" ]
+queda_tempo = 1.5
+
+[node name="sprites" type="Node2D" parent="."]
+editor/display_folded = true
+
+[node name="Sem título" type="Sprite" parent="sprites"]
+position = Vector2( 0, 6 )
+texture = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 0, 9 )
+scale = Vector2( 0.971698, 1 )
+shape = SubResource( 1 )
+
+[node name="queda_time" type="Timer" parent="."]
+process_mode = 0
+wait_time = 1.5
+one_shot = true
+
+[node name="respaw" type="Timer" parent="."]
+
+[node name="sensor" type="Area2D" parent="."]
+collision_layer = 2
+
+[node name="shape" type="CollisionShape2D" parent="sensor"]
+position = Vector2( -0.499985, -2 )
+scale = Vector2( 2.42308, 1 )
+shape = SubResource( 2 )
+
+[node name="anime" type="AnimationPlayer" parent="."]
+playback_speed = 1.2
+anims/treme = SubResource( 3 )
+[connection signal="timeout" from="queda_time" to="." method="_on_queda_time_timeout"]
+[connection signal="body_entered" from="sensor" to="." method="_on_sensor_body_entered"]
+[connection signal="body_exited" from="sensor" to="." method="_on_sensor_body_exited"]

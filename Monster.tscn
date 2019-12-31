@@ -1,0 +1,48 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://walk/walk (1)_01.png" type="Texture" id=1]
+[ext_resource path="res://walk/walk (1)_19.png" type="Texture" id=2]
+[ext_resource path="res://walk/walk (1)_08.png" type="Texture" id=3]
+[ext_resource path="res://walk/walk (1)_12.png" type="Texture" id=4]
+[ext_resource path="res://walk/walk (1)_15.png" type="Texture" id=5]
+[ext_resource path="res://walk/walk (1)_17.png" type="Texture" id=6]
+
+[sub_resource type="SpriteFrames" id=1]
+
+animations = [ {
+"frames": [ ExtResource( 1 ), ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+_sections_unfolded = [ "Resource" ]
+
+[sub_resource type="CapsuleShape2D" id=2]
+
+custom_solver_bias = 0.0
+radius = 10.0
+height = 75.3253
+
+[node name="Monster" type="StaticBody2D"]
+
+scale = Vector2( 0.5, 0.5 )
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+_sections_unfolded = [ "Transform", "Z Index" ]
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="." index="0"]
+
+frames = SubResource( 1 )
+animation = "default"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="1"]
+
+scale = Vector2( 2.40385, 0.965116 )
+shape = SubResource( 2 )
+
+
